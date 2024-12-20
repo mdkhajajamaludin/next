@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Resume</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-left">
+                <h1>Your Name</h1>
+                <h2>Software Developer</h2>
+            </div>
+            <div class="header-right">
+                <h3>CONTACT</h3>
+                <ul>
+                    <li>📞 Your Phone</li>
+                    <li>📧 your.email@example.com</li>
+                    <li>🌐 your.portfolio.com</li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Profile Section -->
+        <section class="profile">
+            <h2>PROFILE</h2>
+            <div class="profile-content">
+                <p>Your professional description here</p>
+                <div class="profile-image">
+                    <img src="your-image.jpg" alt="Profile Picture">
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column Layout -->
+        <div class="two-columns">
+            <div class="left-column">
+                <section class="hobbies">
+                    <h2>HOBBIES</h2>
+                    <div class="hobby-item">
+                        <h3>LEARNING SKILL</h3>
+                        <p>Your learning skills description</p>
+                    </div>
+                    <div class="hobby-item">
+                        <h3>DESIGNING & ART</h3>
+                        <p>Your design interests</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="education">
+                    <h2>EDUCATION</h2>
+                    <div class="education-item">
+                        <span class="year">2023</span>
+                        <h3>Your University</h3>
+                        <p>Your Degree</p>
+                    </div>
+                </section>
+
+                <section class="expertise">
+                    <h2>EXPERTISE</h2>
+                    <div class="skills">
+                        <div class="skill-item">DBMS</div>
+                        <div class="skill-item">DSA</div>
+                        <div class="skill-item">PYTHON</div>
+                        <div class="skill-item">C, C++</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+  :root {
+    --primary-color: #8A2BE2;
+    --secondary-color: #FFD700;
+    --background-dark: #333;
+    --background-light: #fff;
+    --text-dark: #333;
+    --text-light: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background: linear-gradient(to right, var(--background-light) 60%, var(--background-dark) 40%);
+    border-radius: 20px;
+}
+
+.header-left h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.header-left h2 {
+    color: var(--primary-color);
+}
+
+.header-right {
+    color: var(--text-light);
+}
+
+/* Profile Section */
+.profile {
+    background: var(--primary-color);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: var(--text-light);
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Two Column Layout */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Skills Styling */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.skill-item {
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: 1rem;
+    border-radius: 50%;
+    text-align: center;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Decorative Elements */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url('path-to-your-butterfly-image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+    
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

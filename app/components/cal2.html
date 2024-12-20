@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV70mdVCAk5abC7vpt60p09aA0Vs1" crossorigin="anonymous">
+  <style>
+    .calculator {
+      width: 25rem;
+      margin: 0 auto;
+      padding: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .calculator .btn {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container calculator">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" id="display" readonly>
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-caret-down-fill"></i>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        // You can add more operators here
+        <li><a class="dropdown-item" href="#" onclick="operate('+')">+</a></li>
+        <li><a class="dropdown-item" href="#" onclick="operate('-')">-</a></li>
+        <li><a class="dropdown-item" href="#" onclick="operate('*')">*</a></li>
+        <li><a class="dropdown-item" href="#" onclick="operate('/')">/</a></li>
+      </ul>
+    </div>
+    <div class="btn-group" role="group" aria-label="Numbers">
+      // Number buttons
+      <button type="button" class="btn" onclick="appendNumber(7)">7</button>
+      <button type="button" class="btn" onclick="appendNumber(8)">8</button>
+      <button type="button" class="btn" onclick="appendNumber(9)">9</button>
+      <button type="button" class="btn" onclick="appendNumber(4)">4</button>
+      <button type="button" class="btn" onclick="appendNumber(5)">5</button>
+      <button type="button" class="btn" onclick="appendNumber(6)">6</button>
+      <button type="button" class="btn" onclick="appendNumber(1)">1</button>
+      <button type="button" class="btn" onclick="appendNumber(2)">2</button>
+      <button type="button" class="btn" onclick="appendNumber(3)">3</button>
+      <button type="button" class="btn" onclick="appendNumber(0)">0</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Operators">
+      // Operator buttons
+      <button type="button" class="btn" onclick="clearDisplay()">C</button>
+      <button type="button" class="btn" onclick="operate('+')">+</button>
+      <button type="button" class="btn" onclick="operate('-')">-</button>
+      <button type="button" class="btn" onclick="operate('*')">*</button>
+      <button type="button" class="btn" onclick="operate('/')">/</button>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="calculate()">=</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBud8A+4GNz4FGXIU2BjlfQ+CimljD79Nl99W8feA4iaW+9j" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+  <script>
+    let display = document.getElementById('display');
+    let currentNum = '';
+    let currentOperator = null;
+
+    function appendNumber(number) {
+      currentNum += number;
+      display.value = currentNum;
+    }
+
+    function clearDisplay() {
+      currentNum = '';
+      currentOperator = null;
+      display.value = '';
+    }
+
+    function operate(operator) {
+      if (currentOperator !== null) calculate();
+      currentNum = parseFloat(currentNum);
+      currentOperator = operator;
+      display.value += currentOperator;
+    }
+
+    function calculate() {
+      let nextNum = parseFloat(display.value.slice(display.value.length - 1));
+      let result;
+
+      switch (currentOperator) {
+        case '+':
+          result = currentNum + nextNum;
+          break;
+        case '-':
+          result = currentNum - nextNum;
+          break;
+        case '*':
+          result = currentNum * nextNum;
+          break;
+        case '/':
+          if (nextNum === 0) {
+            alert('Cannot divide by zero');
+            return;
+          }
+          result = currentNum / nextNum;
+          break;
+      }
+
+      currentNum = result;
+      currentOperator = null;
+      display.value = result;
+    }
+  </script>
+</body>
+</html>
+
